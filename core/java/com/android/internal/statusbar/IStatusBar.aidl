@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License.
  */
- 
+
 package com.android.internal.statusbar;
 
 import android.content.Intent;
@@ -48,6 +48,8 @@ oneway interface IStatusBar
     void showCustomIntentAfterKeyguard(inout Intent intent);
     void toggleLastApp();
     void toggleKillApp();
+    void hideHeadsUpCandidate(String packageName);
+    void scheduleHeadsUpClose();
     void toggleScreenshot();
     void setPieTriggerMask(int newMask, boolean lock);
     void setAutoRotate(boolean enabled);

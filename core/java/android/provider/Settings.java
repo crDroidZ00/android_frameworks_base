@@ -2194,6 +2194,7 @@ public final class Settings {
 
         /**
          * Shake mode for ambient display
+         *
          * @hide
          */
         public static final String DOZE_SHAKE_MODE = "doze_shake_mode";
@@ -2269,6 +2270,13 @@ public final class Settings {
          */
         @Deprecated
         public static final String STATUS_BAR_QUICK_QS_PULLDOWN = System.QS_QUICK_PULLDOWN;
+
+        /**
+         * Defines global heads up enable/disable switch.
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_GLOBAL_SWITCH = "heads_up_global_switch";
 
         /**
          * Defines global heads up snooze time if user want to snooze it.

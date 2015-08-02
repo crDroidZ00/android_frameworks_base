@@ -45,6 +45,13 @@
     <!-- Used by selector -->
     <color name="card_pressed">#7e3c3c3c</color>
 
+    <!-- PitchBlack -->
+    <color name="midnight_primary">#ff131313</color>
+    <color name="midnight_secondary">#ff181818</color>
+    <color name="midnight_transparent">#31ffffff</color>
+    <color name="midnight_white">#ffffffff</color>
+    <color name="midnight_theme">#ffb33333</color>
+
     <!-- Task Manager -->
     <color name="memory_usage_item_background">#00000000</color>
     <color name="task_manager_title_text">#ffffffff</color>

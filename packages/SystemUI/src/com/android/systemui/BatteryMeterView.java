@@ -507,9 +507,10 @@ public class BatteryMeterView extends View implements DemoMode,
             final int pb = getPaddingBottom() + (mHorizontal ? (int)(mHeight * 0.08f) : 0);
             final int height = mHeight - pt - pb;
             final int width = mWidth - pl - pr;
-            final boolean fastCharging = tracker.chargeRate == BatteryManager.BATTERY_CHARGE_RATE_FAST_CHARGING;
-
             final int buttonHeight = (int) ((mHorizontal ? width : height) * mButtonHeightFraction);
+            final boolean fastCharging;
+
+            fastCharging = tracker.chargeRate == BatteryManager.BATTERY_CHARGE_RATE_FAST_CHARGING;
 
             mFrame.set(0, 0, width, height);
             mFrame.offset(pl, pt);
@@ -857,9 +858,11 @@ public class BatteryMeterView extends View implements DemoMode,
         private void drawCircle(Canvas canvas, BatteryTracker tracker,
                 float textX, RectF drawRect) {
             boolean unknownStatus = tracker.status == BatteryManager.BATTERY_STATUS_UNKNOWN;
-            boolean fastCharging = tracker.chargeRate == BatteryManager.BATTERY_CHARGE_RATE_FAST_CHARGING;
+            boolean fastCharging;
             int level = tracker.level;
             Paint paint;
+
+            fastCharging = tracker.chargeRate == BatteryManager.BATTERY_CHARGE_RATE_FAST_CHARGING;
 
             if (unknownStatus) {
                 paint = mBackPaint;

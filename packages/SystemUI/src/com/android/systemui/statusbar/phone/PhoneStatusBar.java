@@ -314,6 +314,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     int mIconHPadding = -1;
     Display mDisplay;
     Point mCurrentDisplaySize = new Point();
+    int mCurrUiThemeMode;
 
     StatusBarWindowView mStatusBarWindow;
     FrameLayout mStatusBarWindowContent;
@@ -946,6 +947,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mStatusBarWindow = new StatusBarWindowView(mContext, null);
         mStatusBarWindow.mService = this;
+        mCurrUiThemeMode = mContext.getResources().getConfiguration().uiThemeMode;
 
         super.start(); // calls createAndAddWindows()
 
@@ -4357,7 +4359,16 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mQSPanel.updateResources();
         }
 
-        loadDimens();
+        // detect theme ui mode change
+        final Resources res = context.getResources();
+        int uiThemeMode = res.getConfiguration().uiThemeMode;
+        if (uiThemeMode != mCurrUiThemeMode) {
+            mCurrUiThemeMode = uiThemeMode;
+           // recreateStatusBar(false);
+        } else {
+            loadDimens();
+        }
+
         mLinearOutSlowIn = AnimationUtils.loadInterpolator(
                 mContext, android.R.interpolator.linear_out_slow_in);
 

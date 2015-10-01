@@ -981,12 +981,9 @@ public abstract class BaseStatusBar extends SystemUI implements
         final View settingsButton = guts.findViewById(R.id.notification_inspect_item);
         final View appSettingsButton
                 = guts.findViewById(R.id.notification_inspect_app_provided_settings);
-<<<<<<< HEAD
         final View filterButton = guts.findViewById(R.id.notification_inspect_filter_notification);
-=======
         final View headsUpButton
                 = guts.findViewById(R.id.notification_inspect_heads_up);
->>>>>>> d2eb195... Frameworks: Slim heads up customizations for LP (1/2)
         if (appUid >= 0) {
             final int appUidF = appUid;
             settingsButton.setOnClickListener(new View.OnClickListener() {
@@ -1071,11 +1068,8 @@ public abstract class BaseStatusBar extends SystemUI implements
         } else {
             settingsButton.setVisibility(View.GONE);
             appSettingsButton.setVisibility(View.GONE);
-<<<<<<< HEAD
             filterButton.setVisibility(View.GONE);
-=======
             headsUpButton.setVisibility(View.GONE);
->>>>>>> d2eb195... Frameworks: Slim heads up customizations for LP (1/2)
         }
 
     }

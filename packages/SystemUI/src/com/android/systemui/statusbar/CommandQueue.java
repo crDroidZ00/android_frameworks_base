@@ -321,6 +321,7 @@ public class CommandQueue extends IStatusBar.Stub {
         synchronized (mList) {
             mHandler.removeMessages(MSG_SMART_PULLDOWN);
             mHandler.obtainMessage(MSG_SMART_PULLDOWN, 0, 0, null).sendToTarget();
+        }
     }
 
     public void hideHeadsUpCandidate(String packageName) {

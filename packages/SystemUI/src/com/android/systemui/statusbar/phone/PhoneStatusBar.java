@@ -697,32 +697,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
     };
 
-    final private ContentObserver mHeadsUpObserver = new ContentObserver(mHandler) {
-        @Override
-        public void onChange(boolean selfChange) {
-            boolean wasUsing = mUseHeadsUp;
-            mUseHeadsUp = ENABLE_HEADS_UP && !mDisableNotificationAlerts
-                    && Settings.Global.HEADS_UP_OFF != Settings.Global.getInt(
-                    mContext.getContentResolver(), Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED,
-                    Settings.Global.HEADS_UP_OFF);
-            mHeadsUpTicker = mUseHeadsUp && 0 != Settings.Global.getInt(
-                    mContext.getContentResolver(), SETTING_HEADS_UP_TICKER, 0);
-            mTickerEnabled = !mUseHeadsUp;
-            Log.d(TAG, "heads up is " + (mUseHeadsUp ? "enabled" : "disabled"));
-            if (wasUsing != mUseHeadsUp) {
-                if (!mUseHeadsUp) {
-                    Log.d(TAG, "dismissing any existing heads up notification on disable event");
-                    setHeadsUpVisibility(false);
-                    mHeadsUpNotificationView.release();
-                    removeHeadsUpView();
-                } else {
-                    addHeadsUpView();
-                }
-            }
-            initTickerView();
-        }
-    };
-
     private int mInteractingWindows;
     private boolean mAutohideSuspended;
     private int mStatusBarMode;
@@ -927,16 +901,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         // when StatusBarManager notifies us that the state has changed.
         if (!mDisableNotificationAlerts) {
             addHeadsUpView();
-        }
-
-        mHeadsUpObserver.onChange(true); // set up
-        if (ENABLE_HEADS_UP) {
-            mContext.getContentResolver().registerContentObserver(
-                    Settings.Global.getUriFor(Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED), true,
-                    mHeadsUpObserver);
-            mContext.getContentResolver().registerContentObserver(
-                    Settings.Global.getUriFor(SETTING_HEADS_UP_TICKER), true,
-                    mHeadsUpObserver);
         }
 
         WallpaperManager wm = (WallpaperManager) mContext.getSystemService(

@@ -4352,6 +4352,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     void updateResources(Configuration newConfig) {
         ContentResolver resolver = mContext.getContentResolver();
+        final Context context = mContext;
 
         // detect theme change.
         ThemeConfig newTheme = newConfig != null ? newConfig.themeConfig : null;

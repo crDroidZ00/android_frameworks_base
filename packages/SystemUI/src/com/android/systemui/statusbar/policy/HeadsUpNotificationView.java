@@ -16,6 +16,7 @@
 
 package com.android.systemui.statusbar.policy;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -24,6 +25,7 @@ import android.graphics.Outline;
 import android.graphics.Rect;
 import android.os.SystemClock;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -85,6 +87,8 @@ public class HeadsUpNotificationView extends LinearLayout implements SwipeHelper
 
     private static int sRoundedRectCornerRadius = 0;
 
+    private boolean mTouchOutside;
+
     public HeadsUpNotificationView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -145,6 +149,8 @@ public class HeadsUpNotificationView extends LinearLayout implements SwipeHelper
             mContentHolder.removeAllViews();
         }
 
+        mTouchOutside = false;
+
         if (mHeadsUp != null) {
             mMostRecentPackageName = mHeadsUp.notification.getPackageName();
             mHeadsUp.row.setSystemExpanded(true);
@@ -178,7 +184,8 @@ public class HeadsUpNotificationView extends LinearLayout implements SwipeHelper
             mHeadsUp.setInterruption();
 
             // 2. Animate mHeadsUpNotificationView in
-            mBar.scheduleHeadsUpOpen();
+            mBar.scheduleHeadsUpOpen(TextUtils.equals(
+                    mHeadsUp.notification.getNotification().category, Notification.CATEGORY_CALL));
 
             // 3. Set alarm to age the notification off
             mBar.resetHeadsUpDecayTimer();
@@ -330,6 +337,8 @@ public class HeadsUpNotificationView extends LinearLayout implements SwipeHelper
         }
 
         getViewTreeObserver().addOnComputeInternalInsetsListener(this);
+
+        mTouchOutside = false;
     }
 
     @Override
@@ -370,10 +379,25 @@ public class HeadsUpNotificationView extends LinearLayout implements SwipeHelper
         if (SystemClock.elapsedRealtime() < mStartTouchTime) {
             return false;
         }
-        mBar.resetHeadsUpDecayTimer();
-        return mEdgeSwipeHelper.onTouchEvent(ev)
-                || mSwipeHelper.onTouchEvent(ev)
-                || super.onTouchEvent(ev);
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_OUTSIDE:
+                if (mTouchOutside) return true;
+                if (mBar.mHeadsUpTouchOutside) {
+                    // Hide headsup, after 0.5 sec.
+                    mBar.getHandler().postDelayed(new Runnable() {
+                        public void run() {
+                            mBar.scheduleHeadsUpClose();
+                        }
+                    }, 500);
+                }
+                mTouchOutside = true;
+                return true;
+            default:
+                mBar.resetHeadsUpDecayTimer();
+                return mEdgeSwipeHelper.onTouchEvent(ev)
+                        || mSwipeHelper.onTouchEvent(ev)
+                        || super.onTouchEvent(ev);
+        }
     }
 
     @Override

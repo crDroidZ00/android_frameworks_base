@@ -67,6 +67,7 @@ import com.android.systemui.qs.tiles.VolumeTile;
 import com.android.systemui.qs.tiles.ScreenTimeoutTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.NavBarTile;
+import com.android.systemui.qs.tiles.ZFcrOTATile;
 import com.android.systemui.settings.CurrentUserTracker;
 import com.android.systemui.statusbar.CustomTileData;
 import com.android.systemui.statusbar.policy.BluetoothController;
@@ -367,6 +368,8 @@ public class QSTileHost implements QSTile.Host {
                 return new LockscreenToggleTile(this);
             case QSConstants.TILE_LTE:
                 return new LteTile(this);
+            case QSConstants.TILE_OTA:
+                return new ZFcrOTATile(this);
             case QSConstants.TILE_VISUALIZER:
                 return new VisualizerTile(this);
             case QSConstants.TILE_VOLUME:

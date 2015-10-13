@@ -1727,24 +1727,26 @@ ResourceTable::ResourceTable(Bundle* bundle, const String16& assetsPackage, Reso
     , mNumLocal(0)
     , mBundle(bundle)
 {
-    ssize_t packageId = -1;
-    switch (mPackageType) {
-        case App:
-        case AppFeature:
-            packageId = 0x7f;
-            break;
+    ssize_t packageId = mBundle->getForcedPackageId();
+    if (packageId == -1) {
+        switch (mPackageType) {
+            case App:
+            case AppFeature:
+                packageId = 0x7f;
+                break;
 
-        case System:
-            packageId = 0x01;
-            break;
+            case System:
+                packageId = 0x01;
+                break;
 
-        case SharedLibrary:
-            packageId = 0x00;
-            break;
+            case SharedLibrary:
+                packageId = 0x00;
+                break;
 
-        default:
-            assert(0);
-            break;
+            default:
+                assert(0);
+                break;
+        }
     }
 
     if (pkgIdOverride != 0) {
@@ -3030,9 +3032,9 @@ status_t ResourceTable::flatten(Bundle* bundle, const sp<const ResourceFilter>& 
             // which we have entries in this type.
             const SortedVector<ConfigDescription> uniqueConfigs(t->getUniqueConfigs());
             const size_t NC = uniqueConfigs.size();
-
+            
             const size_t typeSize = sizeof(ResTable_type) + sizeof(uint32_t)*N;
-
+            
             for (size_t ci=0; ci<NC; ci++) {
                 const ConfigDescription& config = uniqueConfigs[ci];
 

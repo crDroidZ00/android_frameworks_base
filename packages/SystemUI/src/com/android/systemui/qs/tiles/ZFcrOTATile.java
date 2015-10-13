@@ -42,7 +42,7 @@ import java.util.UUID;
     private boolean mListening;
     private OTAObserver mObserver;
 
-    public OTATile(Host host) {
+    public ZFcrOTATile(Host host) {
         super(host);
         mObserver = new OTAObserver(mHandler);
     }

@@ -53,7 +53,7 @@ public class QSConstants {
     public static final String TILE_POWER_MENU = "power_menu";
     public static final String TILE_SYNC = "sync";
     public static final String TILE_BATTERY_SAVER = "battery_saver";
-    public static final String TILE_OTA = "OTA Updater"
+    public static final String TILE_OTA = "OTA Updater";
     public static final String DYNAMIC_TILE_NEXT_ALARM = "next_alarm";
     public static final String DYNAMIC_TILE_IME_SELECTOR = "ime_selector";
     public static final String DYNAMIC_TILE_SU = "su";

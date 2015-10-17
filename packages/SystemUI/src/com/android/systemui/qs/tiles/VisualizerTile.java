@@ -161,12 +161,10 @@ public class VisualizerTile extends QSTile<QSTile.State> implements KeyguardMoni
 
     @Override
     protected void handleClick() {
-        mHost.startSettingsActivity(AUDIO_EFFECTS);
-    }
-
-    @Override
-    protected void handleLongClick() {
-        mHost.startSettingsActivity(AUDIO_EFFECTS);
+       Intent intent = new Intent(Intent.ACTION_MAIN);
+       intent.setClassName("com.vipercn.viper4android_v2",
+                         "com.vipercn.viper4android_v2.activity.ViPER4Android");
+        mHost.startSettingsActivity(intent);
     }
 
     @Override

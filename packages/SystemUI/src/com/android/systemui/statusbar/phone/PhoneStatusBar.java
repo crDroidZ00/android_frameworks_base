@@ -71,6 +71,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
+import android.net.Uri;
 import android.media.AudioAttributes;
 import android.media.MediaMetadata;
 import android.media.session.MediaController;
@@ -437,6 +438,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     int mInitialTouchX;
     int mInitialTouchY;
 
+    // Battery saver bar color
+    private boolean mBatterySaverBarColor;
+
     // for disabling the status bar
     int mDisabled = 0;
 
@@ -525,6 +529,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.HEADS_UP_TOUCH_OUTSIDE), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.BATTERY_SAVER_MODE_COLOR),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -657,6 +664,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mCrdroidLogo = Settings.System.getIntForUser(resolver,
                     Settings.System.STATUS_BAR_CRDROID_LOGO, 0, mCurrentUserId) == 1;
             showCrdroidLogo(mCrdroidLogo);
+
+            mBatterySaverBarColor = Settings.System.getInt(
+                    resolver, Settings.System.BATTERY_SAVER_MODE_COLOR, 1) == 1;
 
             boolean showTaskManager = Settings.System.getIntForUser(resolver,
                     Settings.System.ENABLE_TASK_MANAGER, 0, UserHandle.USER_CURRENT) == 1;
@@ -3349,9 +3359,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
             // private flag to permit a transparent navbar when the bar is vertical (landscape)
             // this is buggy unless carefully controlled.
-            if (mNavigationBarView != null) {
+            if ((diff & View.SYSTEM_UI_ALLOW_TRANSPARENT_VERTICAL_NAV) != 0 &&
+                mNavigationBarView != null) {
                 mNavigationBarView.setTransparencyAllowedWhenVertical(
-                        (diff & View.SYSTEM_UI_ALLOW_TRANSPARENT_VERTICAL_NAV) != 0);
+                        (vis & View.SYSTEM_UI_ALLOW_TRANSPARENT_VERTICAL_NAV) != 0);
             }
 
             mSystemUiVisibility = newVal;
@@ -3484,7 +3495,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         final boolean powerSave = mBatteryController.isPowerSave();
         final boolean anim = (mScreenOn == null || mScreenOn) && windowState != WINDOW_STATE_HIDDEN
                 && !powerSave;
-        if (powerSave && getBarState() == StatusBarState.SHADE) {
+        if (powerSave && mBatterySaverBarColor && getBarState() == StatusBarState.SHADE) {
             mode = MODE_WARNING;
         }
         transitions.transitionTo(mode, anim);

@@ -2151,29 +2151,10 @@ public final class Settings {
         public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
         /**
-         * Enable/disable overwrite default value for ambient display
-         * @hide
-         */
-        public static final String DOZE_OVERWRITE_VALUE = "doze_overwrite_value";
-
-        /**
-         * Duration in for ambient display
-         * @hide
-         */
-        public static final String DOZE_PULSE_DURATION_IN = "doze_pulse_duration_in";
-
-        /**
          * Duration visible for ambient display
          * @hide
          */
         public static final String DOZE_PULSE_DURATION_VISIBLE = "doze_pulse_duration_visible";
-
-        /**
-         * Duration out for ambient display
-
-         * @hide
-         */
-        public static final String DOZE_PULSE_DURATION_OUT = "doze_pulse_duration_out";
 
         /**
          * Pulse if there is notifications for ambient display
@@ -2210,6 +2191,12 @@ public final class Settings {
          * @hide
          */
         public static final String DOZE_BRIGHTNESS = "doze_brightness";
+
+        /**
+         * Follow pre-configured doze pulse repeat schedule
+         * @hide
+         */
+        public static final String DOZE_SCHEDULE = "doze_schedule";
 
         /**
          * Whether to show the IME switcher in the status bar
@@ -2297,6 +2284,12 @@ public final class Settings {
          * @hide
          */
         public static final String HEADS_UP_TOUCH_OUTSIDE = "heads_up_touch_outside";
+
+        /**
+         * Hide notification instead of remove when swiping headsup
+         * @hide
+         */
+        public static final String HEADS_UP_DISMISS_ON_REMOVE = "heads_up_dismiss_on_remove";
 
         /**
          * Quick Settings Quick Pulldown

@@ -21,19 +21,19 @@
 		<color name="title_divider_color">#cdcdcd</color>
 		<color name="widget_subtitle_color">#ffffffff</color>
 		<color name="widget_title_color">#ffffffff</color>
-		<color name="accent_color_dark">@color/midnight_theme</color>
-		<color name="accent_color_light">@color/midnight_theme</color>
+		<color name="accent_color_dark">@color/pb_sb</color>
+		<color name="accent_color_light">@color/pb_ab</color>
 
 	<!--PitchBlack colors-->
 		<color name="midnight_primary">#000000</color>
 		<color name="midnight_secondary">#000000</color>
 		<color name="midnight_transparent">#31ffffff</color>
 		<color name="midnight_white">#ffffffff</color>
-		<color name="midnight_theme">#FF4081</color>
+		<color name="midnight_theme">#e74c3c</color>
 		<color name="qs_toggles_midnight">#ffffffff</color>
 		<color name="midnight_text">#b3ffffff</color>
-	    <color name="pb_sb">#303F9F</color>
-	    <color name="pb_ab">#3F51B5</color>
+                <color name="pb_sb">#2980b9</color>
+                <color name="pb_ab">#3498db</color>
 		<color name="pb_dark_shade">#BF000000</color>
 		
 		<color name="app_background">#ff000000</color>
@@ -75,17 +75,17 @@
 		
 		<color name="launcher_background">#80000000</color>
 		
-		<color name="play_store_primary">#ff689f38</color>
-		<color name="play_store_primary_disabled">#80689f38</color>
+		<color name="play_store_primary">#ff2980b9</color>
+		<color name="play_store_primary_disabled">#802980b9</color>
 			
   <!--Keep this color within the dark monochrome hues, or else it would be white text on a bright XXXXXX color (resolver list and such)-->
-        <color name="theme_color_hardcoded_color">#ff212021</color>
+        <color name="theme_color_hardcoded_color">#ff000000</color>
 		
   <!--Toast Background and Volume Panel Background-->
         <color name="theme_color_hardcoded_translucent_black">@color/pb_dark_shade</color>
 		
   <!--Do not change this black, as it affects button colors with black text on black-->
-        <color name="theme_color_play_store_color">#ff212021</color>
+        <color name="theme_color_play_store_color">#ff000000</color>
 
   <!--Activated Theme Color-->
 	<!--Main app theme accents-->
@@ -166,7 +166,7 @@
 		
 	<!--Notification Modifications-->
 		<color name="system_notification_accent_color">@color/theme_color_common_color</color>
-		<color name="notification_icon_bg_color">#00000000</color>
+		<color name="notification_icon_bg_color">@color/midnight_primary</color>
 		<color name="notification_action_color_filter">@android:color/white</color>
 		<color name="notification_media_primary_color">@android:color/white</color>
 		<color name="notification_media_secondary_color">@android:color/white</color>
@@ -207,14 +207,14 @@
 	    <color name="hint_foreground_holo_light">#424242</color>
 	    <color name="link_text_holo_dark">@color/midnight_theme</color>
 	    <color name="link_text_holo_light">#424242</color>	
-    	<color name="notification_material_action_textcolor">#ffffffff</color>
-        <color name="notification_button_text">#ffffffff</color>
-		<color name="primary_text_default_material_light">#424242</color>
-		<color name="secondary_text_default_material_light">#9E9E9E</color>
-
-	    <!--Ripple Colors-->
-		<color name="ripple_material_dark">@color/pb_ab</color>		
-		<color name="ripple_material_light">@color/theme_color_ripple_light</color>
-        <color name="material_blue_grey">@color/midnight_primary</color>
-        <color name="colorEdgeEffect">@color/midnight_theme</color>
+            <color name="notification_material_action_textcolor">#ffffffff</color>
+            <color name="notification_button_text">#ffffffff</color>
+            <color name="primary_text_default_material_light">#424242</color>
+            <color name="secondary_text_default_material_light">#9E9E9E</color>
+	    
+            <!--Ripple Colors-->
+            <color name="ripple_material_dark">@color/pb_ab</color>		
+            <color name="ripple_material_light">@color/theme_color_ripple_light</color>
+            <color name="material_blue_grey">@color/midnight_primary</color>
+            <color name="colorEdgeEffect">@color/midnight_theme</color>
 </resources>

@@ -3695,18 +3695,18 @@ public final class Settings {
         public static final String VOICE_WAKEUP = "voice_wakeup";
 
         /**
+         * Color of the expanded status bar header background
+         * @hide
+         */
+        public static final String STATUS_BAR_EXPANDED_HEADER_BG_COLOR = "status_bar_expanded_header_bg_color";
+        
+        /**
          * An intent (a flattened Uri String) to launch when user voice launch
          * action is detected. An empty or null string will launch the default
          * voice search activity.
          * @hide
          */
         public static final String VOICE_LAUNCH_INTENT = "voice_launch_intent";
-
-        /**
-         * Wether navigation bar is enabled or not
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
 
 	/**
          * Navigation bar height when it is on protrait

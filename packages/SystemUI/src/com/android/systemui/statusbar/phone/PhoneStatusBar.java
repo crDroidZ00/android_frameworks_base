@@ -4377,9 +4377,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mCurrUiThemeMode = uiThemeMode;
             // Needs to recreate statusbar 
             recreateStatusBar();
-            observer.update();
-            addSidebarView();
-            attachPieContainer(isPieEnabled());
+            updateRowStates();
+            updateSpeedbump();
+            updateClearAll();
+            updateEmptyShadeView();
         } else {
             loadDimens();
         }

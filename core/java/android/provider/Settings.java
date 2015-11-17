@@ -2832,37 +2832,6 @@ public final class Settings {
          * The default value is 1.
          *
          * @deprecated Use {@link Global#ANIMATOR_DURATION_SCALE} instead
-         * Wether navigation bar is enabled or not
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
-         /**
-         * Color of the quick settings panel background
-         * @hide
-         */
-        public static final String QS_BACKGROUND_COLOR = "qs_background_color";
-
-        /**
-         * Color of the notifications icon background
-         * @hide
-         */
-        public static final String NOTIFICATION_APP_ICON_BG_COLOR = "notification_app_icon_bg_color";
-
-        /**
-         * Color of the notification text
-         * @hide
-         */
-        public static final String NOTIFICATION_TEXT_COLOR = "notification_text_color";
-
-        /**
-         * Color of the notifications background
-         * @hide
-         */
-        public static final String NOTIFICATION_BG_COLOR = "notification_bg_color";
-
-         /**
-         * Transparent shade
-         * @hide
          */
         @Deprecated
         public static final String ANIMATOR_DURATION_SCALE = Global.ANIMATOR_DURATION_SCALE;

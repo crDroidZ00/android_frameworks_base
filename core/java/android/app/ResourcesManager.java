@@ -532,7 +532,7 @@ public class ResourcesManager {
                 } else {
                     r.updateConfiguration(config, dm, compat);
                 }
-                if (themeChanged || themeChanged2) {
+                if (themeChanged || themeChangedTRDS) {
                     r.updateStringCache();
                 }
                 //Slog.i(TAG, "Updated app resources " + v.getKey()

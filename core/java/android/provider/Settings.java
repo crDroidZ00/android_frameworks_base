@@ -4115,7 +4115,6 @@ public final class Settings {
         /**
          * Recent card text color
          *
-         * Whether to disable the torch when the screen turns off
          * @hide
          */
         public static final String RECENT_CARD_TEXT_COLOR = "recent_card_text_color";
@@ -4126,12 +4125,6 @@ public final class Settings {
          * @hide
          */
         public static final String BATTERY_SAVER_MODE_COLOR = "battery_save_mode_color";
-
-        /**
-         * TRDS: Override custom notification and qs colors on theme change
-         * @hide
-         */
-        public static final String OVERRIDE_CUSTOM_COLORS = "override_custom_colors";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings

@@ -36,7 +36,7 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             systemui:keyRepeat="true" />
         <com.android.systemui.statusbar.policy.KeyButtonView
             android:id="@+id/dpad_left"
@@ -44,14 +44,14 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             systemui:keyRepeat="true" />
         <com.android.systemui.statusbar.policy.KeyButtonView
             android:id="@+id/one"
             android:layout_width="@dimen/navigation_extra_key_width"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:scaleType="centerInside" />
+            android:scaleType="fitCenter" />
     </FrameLayout>
     <View
         android:layout_width="0dp"
@@ -97,7 +97,6 @@
             systemui:keyRepeat="true" />
         <com.android.systemui.statusbar.policy.KeyButtonView
             android:id="@+id/six"
-            android:scaleType="centerInside"
             android:layout_width="128dp" android:paddingLeft="25dp" android:paddingRight="25dp"
             android:layout_height="match_parent"
             android:layout_weight="0"

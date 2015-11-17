@@ -9,6 +9,5 @@ LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4 guava
 
 LOCAL_PACKAGE_NAME := DocumentsUI
 LOCAL_CERTIFICATE := platform
-LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 
 include $(BUILD_PACKAGE)
